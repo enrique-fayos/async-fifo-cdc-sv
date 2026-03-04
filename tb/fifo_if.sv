@@ -1,3 +1,45 @@
+//////////////////////////////////////////////////////////////////////////////////
+// Company: N/A
+// Engineer: Enrique Fayos Gimeno
+//
+// Create Date: 04.03.2026
+// Design Name: Asynchronous FIFO Verification Interface
+// Module Name: fifo_if
+// Project Name: Async FIFO in SystemVerilog
+// Target Devices: Generic FPGA/ASIC simulation environment
+// Tool Versions: Tested with Xilinx Vivado 2022.2
+//
+// Description:
+//   SystemVerilog interface used to connect the async_fifo DUT with the
+//   verification environment.
+//
+//   The interface encapsulates all FIFO signals and provides dedicated
+//   clocking blocks for the write and read clock domains. This abstraction
+//   simplifies stimulus generation and monitoring in the testbench while
+//   ensuring proper timing semantics.
+//
+//   Features:
+//     - Parameterizable data width (DATA)
+//     - Separate clock domains for write and read operations
+//     - Clocking blocks for drivers and monitors in each domain
+//     - Modports for DUT and Testbench access control
+//
+//   Clock Domains:
+//     - wr_clk : write domain (controls write enable, input data, full flag)
+//     - rd_clk : read domain  (controls read enable, output data, empty flag)
+//
+// Dependencies:
+//   - Intended to be used with async_fifo.sv and fifo_wrap.sv
+//
+// Revision:
+// Revision 0.01 - Initial interface definition with dual clock domains
+//
+// Additional Comments:
+//   This interface improves readability and maintainability of the
+//   verification environment by grouping FIFO signals and defining
+//   structured access for the DUT and the testbench.
+//
+//////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns / 1ps
 
 interface fifo_if #(parameter DATA = 8)

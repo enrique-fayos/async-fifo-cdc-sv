@@ -33,6 +33,7 @@
 //   and the testbench interface.
 //
 //////////////////////////////////////////////////////////////////////////////////
+`timescale 1ns / 1ps
 
 module fifo_wrap #(
     parameter int DATA  = 8,
