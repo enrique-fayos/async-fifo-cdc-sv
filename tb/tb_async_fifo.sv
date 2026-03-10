@@ -38,15 +38,17 @@
 
 module tb_async_fifo();
 
-    localparam T = 10; // Clock period (10ns => 100MHz)
+    localparam T_WR = 10; // Clock period (10ns => 100MHz)
+    localparam T_RD = 17; // Clock period (17ns => ~58.8MHz)
+
 
     logic wr_clk;
     initial wr_clk = 1'b0;
-    always #(T/2) wr_clk = ~wr_clk;
+    always #(T_WR/2) wr_clk = ~wr_clk;
 
     logic rd_clk;
     initial rd_clk = 1'b0;
-    always #(T/2) rd_clk = ~rd_clk;
+    always #(T_RD/2) rd_clk = ~rd_clk;
 
     fifo_if #(.DATA(8)) vif (.wr_clk(wr_clk), .rd_clk(rd_clk));
 
